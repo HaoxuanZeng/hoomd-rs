@@ -21,7 +21,7 @@ use hoomd_manifold::Spherical;
 /// use hoomd_microstate::boundary::OpenSpherical;
 ///
 /// # fn main() -> Result<(), Box<dyn std::error::Error>> {
-/// let closed_spherical: OpenSpherical<3> = OpenSpherical {};
+/// let open_spherical: OpenSpherical<3> = OpenSpherical {};
 /// # Ok(())
 /// # }
 /// ```
@@ -53,7 +53,7 @@ where
     fn maximum_interaction_range(&self) -> f64 {
         std::f64::consts::PI
     }
-    #[inline]
+    #[inline(always)]
     fn generate_ghosts(&self, _site_properties: &S) -> ArrayVec<S, MAX_GHOSTS> {
         ArrayVec::new()
     }

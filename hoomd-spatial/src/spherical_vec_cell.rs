@@ -60,12 +60,11 @@ where
     ///
     /// The nominal search radius is the edge length of each hypercube in
     /// `SphericalVecCell`. Note that `Spherical` geodesic distances are always larger
-    /// than the euclidean "line-of-sight" distance.
-    ///
-    /// # Panics
-    /// Method will panic if `spherical_nominal_search_radius` is larger than $`\pi/2`$.
+    /// than the euclidean "line-of-sight" distance. Clamps the nominal search radius
+    /// to the range $`[0,\pi/2]`$.
     #[inline]
     #[must_use]
+    #[expect(clippy::missing_panics_doc, reason = "the clamp prevents the panic")]
     pub fn spherical_nominal_search_radius(
         mut self,
         spherical_nominal_search_radius: PositiveReal,
@@ -362,7 +361,7 @@ where
 {
     type Item = K;
 
-    #[inline]
+    #[inline(always)]
     fn next(&mut self) -> Option<Self::Item> {
         loop {
             if let Some(keys) = self.keys
@@ -434,7 +433,7 @@ where
     /// Panics when `radius` is larger than the *maximum search radius*
     /// provided at construction, rounded up to the nearest integer multiple
     /// of the *nominal search radius*.
-    #[inline]
+    #[inline(always)]
     fn points_near_ball(&self, position: &Spherical<D>, radius: f64) -> impl Iterator<Item = K> {
         // convert spherical distance to Euclidean distance
         let euclidean_radius = radius.asin();

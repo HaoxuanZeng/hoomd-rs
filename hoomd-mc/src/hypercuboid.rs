@@ -398,7 +398,7 @@ impl<const N: usize> Cover<Spherical<N>> for OpenSpherical<N> {
         HypercuboidCheckerboard::new(
             rng,
             interaction_range,
-            [2.0.try_into().expect("hard-coded positive number"); N],
+            [hoomd_utility::positive_real!(2.0); N],
             [false; N],
         )
     }
@@ -413,7 +413,7 @@ impl<const N: usize> Cover<Spherical<N>> for OpenSpherical<N> {
         checkerboard.update(
             rng,
             interaction_range,
-            [2.0.try_into().expect("hard-coded positive number"); N],
+            [hoomd_utility::positive_real!(2.0); N],
             [false; N],
         );
     }
