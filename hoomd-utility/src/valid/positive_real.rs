@@ -45,6 +45,11 @@ impl PositiveReal {
     /// Construct from a value, checking that it is finite and greater than 0.
     ///
     /// This is a const-callable equivalent of [`PositiveReal::try_from`].
+    ///
+    /// # Errors
+    ///
+    /// [`Error::NotFinite`] when `v` is not finite.
+    /// [`Error::NotPositive`] when `v` is not a positive value
     #[inline]
     pub const fn from_f64(v: f64) -> Result<Self, Error> {
         if !v.is_finite() {
