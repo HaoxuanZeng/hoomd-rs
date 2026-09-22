@@ -153,7 +153,7 @@ impl TryFrom<f64> for PositiveReal {
 /// ```compile_fail
 /// use hoomd_utility::valid::PositiveReal;
 ///
-/// const BAD: PositiveReal = hoomd_utility::positive_real!(-1.0);
+/// const INVALID: PositiveReal = hoomd_utility::positive_real!(-1.0);
 /// ```
 #[macro_export]
 macro_rules! positive_real {

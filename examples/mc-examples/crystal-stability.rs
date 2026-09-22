@@ -15,6 +15,7 @@ use hoomd_microstate::{
 };
 use hoomd_simulation::{Simulation, macrostate::Isothermal};
 use hoomd_spatial::VecCell;
+use hoomd_utility::positive_real;
 use hoomd_vector::{Angle, Cartesian};
 
 type PositionVector = Cartesian<2>;
@@ -46,8 +47,8 @@ impl HardHexagonMelt {
     fn new() -> anyhow::Result<HardHexagonMelt> {
         let initial_packing_fraction = 0.9;
         let n_replicates_side = 32;
-        let maximum_distance = 0.07;
-        let maximum_rotation = 0.05;
+        const MAXIMUM_DISTANCE: f64 = 0.07;
+        const MAXIMUM_ROTATION: f64 = 0.05;
         let macrostate = Isothermal { temperature: 1.0 };
 
         let regular_hexagon = ConvexPolygon::regular(6);
@@ -92,11 +93,11 @@ impl HardHexagonMelt {
             )?;
 
         let translate =
-            Translate::with_maximum_distance(maximum_distance.try_into()?);
+            Translate::with_maximum_distance(positive_real!(MAXIMUM_DISTANCE));
         let translate_sweep = Sweep(translate);
 
         let rotate =
-            Rotate::with_maximum_rotation(maximum_rotation.try_into()?);
+            Rotate::with_maximum_rotation(positive_real!(MAXIMUM_ROTATION));
         let rotate_sweep = Sweep(rotate);
 
         Ok(HardHexagonMelt {
