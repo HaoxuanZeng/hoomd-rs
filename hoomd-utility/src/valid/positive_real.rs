@@ -44,10 +44,7 @@ pub struct PositiveReal(f64);
 impl PositiveReal {
     /// Construct from a value, checking that it is finite and greater than 0.
     ///
-    /// This is a const-callable equivalent of [`PositiveReal::try_from`] used
-    /// by the [`crate::positive_real!`] macro, which cannot build the value
-    /// directly because the field is private.
-    #[doc(hidden)]
+    /// This is a const-callable equivalent of [`PositiveReal::try_from`].
     #[inline]
     pub const fn from_f64(v: f64) -> Result<Self, Error> {
         if !v.is_finite() {
