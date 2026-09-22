@@ -201,7 +201,7 @@ impl Quasi2dCapsuleSelfAssembly {
             interaction: ApproximateShapeOverlap::new(
                 Convex(capsule),
                 OverlapPenalty::default(),
-                0.01.try_into()?,
+                positive_real!(0.01),
             ),
             r_cut: hamiltonian.maximum_interaction_range(),
         };

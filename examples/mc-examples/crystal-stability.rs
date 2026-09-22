@@ -114,8 +114,10 @@ impl Simulation for HardHexagonMelt {
     /// Advance the simulation forward one step.
     fn advance(&mut self) -> anyhow::Result<()> {
         if self.step().is_multiple_of(10_000) {
-            let expanded_boundary =
-                self.microstate.boundary().scale_volume(1.04.try_into()?);
+            let expanded_boundary = self
+                .microstate
+                .boundary()
+                .scale_volume(positive_real!(1.04));
             self.microstate = self
                 .microstate
                 .clone_with_boundary(expanded_boundary, |_| true)?;
