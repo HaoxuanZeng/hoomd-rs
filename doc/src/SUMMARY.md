@@ -44,6 +44,7 @@
 
 # Reference
 
+- [Compatibility with other crates](compatibility.md)
 - [Release Notes](release-notes.md)
 - [Topics](topics.md)
 - [Notation](notation.md)
