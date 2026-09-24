@@ -44,10 +44,10 @@
 
 # Reference
 
-- [Compatibility with other crates](compatibility.md)
 - [Release Notes](release-notes.md)
 - [Topics](topics.md)
 - [Notation](notation.md)
+- [Compatibility with other crates](compatibility.md)
 - [Development](development.md)
 - [Logo](logo.md)
 - [Credits](credits.md)

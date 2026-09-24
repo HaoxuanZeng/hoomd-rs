@@ -1,9 +1,9 @@
 # Compatibility with other crates
 
-*hoomd-rs* interoperates with many other crates. When you use these crates in your
-own project, you should use the same version to avoid incompatibility errors.
-For example, when *hoomd-rs* uses `parquet` 60.0 and your crate uses `parquet` 59.0,
-you may get an error like this:
+*hoomd-rs* interoperates with many other crates. When you use these crates in
+your own project, you should match versions to avoid incompatibility errors.
+For example, when *hoomd-rs* uses `parquet` 60.0 and your crate uses `parquet`
+59.0, you may get an error like this:
 
 ```text
 ierror[E0277]: the trait bound `for<'a> &'a [LogRecord]: parquet::record::record_writer::RecordWriter<LogRecord>` is not satisfied
@@ -24,9 +24,9 @@ note: there are multiple different versions of crate `parquet` in the dependency
    | ------------------------- this is the found trait
 ```
 
-You can *independently* use other versions of these crates without problems. You will
-only get compile errors when you try to combine your usage of the crate with methods
-in the *hoomd-rs* API.
+You can *independently* use other versions of these crates without problems. Compile
+errors only occur when you try to combine your usage of the crate with methods in
+*hoomd-rs*.
 
 Use these dependencies (only those needed) in your `Cargo.toml` to ensure compatibility
 with this release of *hoomd-rs*:
@@ -52,5 +52,5 @@ your projects. On *ReadTheDocs*, use the version selector to view the requiremen
 specific to the version of *hoomd-rs* that you are using.
 
 > [!NOTE]
-> `bevy` and `parquet` are the most likely to be incompatible as they regularly make
-> new breaking releases.
+> Of these crates, `bevy` and `parquet` are the most likely to be incompatible.
+> They regularly make breaking releases.
