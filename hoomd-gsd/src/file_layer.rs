@@ -2296,7 +2296,7 @@ impl GsdFile {
 
         #[expect(
             clippy::unnecessary_to_owned,
-            reason = "must copy data before writing to avoid hangs on macos"
+            reason = "must copy data before writing to avoid hangs on macOS"
         )]
         self.file
             .write_all(&self.mmap[old_start..old_end].to_vec())?;
@@ -2351,7 +2351,7 @@ impl GsdFile {
 
         #[expect(
             clippy::unnecessary_to_owned,
-            reason = "must copy data before writing to avoid hangs on macos"
+            reason = "must copy data before writing to avoid hangs on macOS"
         )]
         self.file
             .write_all(&self.mmap[old_start..old_end].to_vec())?;
