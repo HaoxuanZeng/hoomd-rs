@@ -27,6 +27,7 @@
 *Fixed:*
 
 `[hoomd-linear-algebra]`: `Matrix::add_assign` no longer uses excess memory (#416).
+`[hoomd-geometry]`: `Simplex3::IntersectsAt` now matches Xenocollide in all cases (#458).
 
 ## 1.3.0 (2026-08-26)
 
