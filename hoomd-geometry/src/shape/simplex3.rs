@@ -659,7 +659,9 @@ mod tests {
         ),
         case::tip_tip_intersection_exact(
             [2.0, 2.0, 2.0].into(),
-            Versor::from_axis_angle([1.0, 0.0, 0.0].try_into().unwrap(), std::f64::consts::FRAC_PI_2),
+            // Hard-coded quaternion required to prevent error accumulation
+            Quaternion::from([2.0_f64.sqrt() / 2.0, 2.0_f64.sqrt() / 2.0, 0.0, 0.0])
+                .to_versor_unchecked(),
             true,
         ),
         case::tip_tip_intersection_imprecise(
