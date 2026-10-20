@@ -454,7 +454,7 @@ where
 
         // f* 4 3
         let n = edge_vectors_q[4].cross(&edge_vectors_q[3]);
-        let aff = self.vertices.map(|v| (v - other.vertices[1]).dot(&n));
+        let aff = self.vertices.map(|v| (v - q.vertices[1]).dot(&n));
         if check_face_on_q_is_separating(&aff) {
             return false;
         }
