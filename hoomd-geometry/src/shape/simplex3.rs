@@ -805,6 +805,30 @@ mod tests {
             Versor::from_axis_angle([1.0, 1.0, 0.0].try_into().unwrap(), std::f64::consts::FRAC_PI_2),
             true,
         ),
+        // Two identical tetrahedra separated along a face normal by a gap of 2/sqrt(3)
+        case::identical_tets_face_normal_gap(
+            [2.0, -2.0, -2.0].into(),
+            Versor::from_axis_angle([1.0, 0.0, 0.0].try_into().unwrap(), std::f64::consts::PI),
+            false,
+        ),
+        // Rotated about and displaced along the body diagonal through vertex 0
+        case::body_diagonal_rotated_displaced(
+            [2.0, 2.0, 2.0].into(),
+            Versor::from_axis_angle([1.0, 1.0, 1.0].try_into().unwrap(), std::f64::consts::PI),
+            false,
+        ),
+        // Displaced along the body diagonal through vertex 0, under rotations that
+        // leave its supporting face as the only candidate separating element
+        case::rotated_displaced_from_vertex_x(
+            [2.0, 2.0, 2.0].into(),
+            Versor::from_axis_angle([1.0, 0.0, 0.0].try_into().unwrap(), std::f64::consts::PI / 3.0),
+            false,
+        ),
+        case::rotated_displaced_from_vertex_z(
+            [2.0, 2.0, 2.0].into(),
+            Versor::from_axis_angle([0.0, 0.0, 1.0].try_into().unwrap(), std::f64::consts::PI / 3.0),
+            false,
+        ),
     )]
     fn test_tetrahedron_overlap_param(
         #[values("intersects_at", "xenocollide")] method: &str,
