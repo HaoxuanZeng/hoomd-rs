@@ -66,7 +66,7 @@ use crate::{BoundingSphereRadius, IntersectsAt, IntersectsAtGlobal, SupportMappi
 /// );
 ///
 /// assert_eq!(planar_tetrahedron.volume(), 0.0);
-/// assert_eq!(planar_tetrahedron.centroid(), [1.0, 1.0, 0.0].into());
+/// assert_eq!(planar_tetrahedron.centroid(), [0.25, 0.25, 0.0].into());
 /// ```
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Simplex3 {
@@ -166,7 +166,8 @@ impl Simplex3 {
     #[inline]
     #[must_use]
     pub fn centroid(&self) -> Cartesian<3> {
-        array::from_fn::<_, 3, _>(|i| self.vertices.iter().fold(0.0, |acc, v| acc + v[i])).into()
+        array::from_fn::<_, 3, _>(|i| 0.25 * self.vertices.iter().fold(0.0, |acc, v| acc + v[i]))
+            .into()
     }
 
     /// Get the edges of the tetrahedron as edge endpoint coordinates. In vertex index
