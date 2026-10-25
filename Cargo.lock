@@ -3827,6 +3827,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "hoomd-data"
+version = "1.3.0"
+dependencies = [
+ "hoomd-geometry",
+ "hoomd-utility",
+ "hoomd-vector",
+ "itertools 0.15.0",
+ "rand 0.10.3",
+ "rand_distr",
+ "serde",
+]
+
+[[package]]
 name = "hoomd-derive"
 version = "1.3.0"
 dependencies = [

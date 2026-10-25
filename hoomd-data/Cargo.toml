@@ -1,0 +1,27 @@
+[package]
+name = "hoomd-data"
+categories.workspace = true
+description = "TODO"
+edition.workspace = true
+homepage.workspace = true
+documentation.workspace = true
+keywords.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+version.workspace = true
+
+[package.metadata.docs.rs]
+rustdoc-args = [ "--html-in-header", "katex.html" ]
+
+[lints]
+workspace = true
+
+[dependencies]
+rand.workspace = true
+rand_distr.workspace = true
+itertools.workspace = true
+serde.workspace = true
+hoomd-geometry.workspace = true
+hoomd-utility.workspace = true
+hoomd-vector.workspace = true
