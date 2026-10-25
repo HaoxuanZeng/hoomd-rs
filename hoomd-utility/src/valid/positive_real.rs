@@ -7,7 +7,7 @@ use serde::{Deserialize, Serialize};
 use std::{
     cmp::Ordering,
     fmt,
-    ops::{Div, DivAssign, Mul, MulAssign},
+    ops::{Add, AddAssign, Div, DivAssign, Mul, MulAssign},
 };
 
 use super::Error;
@@ -189,6 +189,22 @@ impl fmt::Display for PositiveReal {
     }
 }
 
+impl Add for PositiveReal {
+    type Output = Self;
+
+    #[inline]
+    fn add(self, rhs: Self) -> Self {
+        Self(self.0 + rhs.0)
+    }
+}
+
+impl AddAssign<PositiveReal> for PositiveReal {
+    #[inline]
+    fn add_assign(&mut self, rhs: PositiveReal) {
+        self.0 += rhs.0;
+    }
+}
+
 impl Mul for PositiveReal {
     type Output = Self;
 
@@ -242,6 +258,16 @@ mod tests {
 
         let result = PositiveReal::try_from(-1.0);
         check!(result == Err(Error::NotPositive(-1.0)));
+    }
+
+    #[test]
+    fn positive_real_addition() {
+        let sum = positive_real!(0.25) + positive_real!(0.75);
+        check!(sum.get() == 1.0);
+
+        let mut sum = positive_real!(1.0);
+        sum += positive_real!(0.5);
+        check!(sum.get() == 1.5);
     }
 
     #[test]
