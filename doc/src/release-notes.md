@@ -10,6 +10,7 @@
 * `[hoomd-utility]`: Add the `positive_real` macro that generates compile-time-checked `PositiveReal` values (#421).
 * `[hoomd-vector]`: Add the `DoubleVersor` type for rotations of `Cartesian<4>` (#346)
 * `[hoomd-mc]`: Add `DoubleVersor` sampling distribution for MC moves in 4D (#346)
+* `[hoomd-utility]`: impl `Add` and `AddAssign` for `PositiveReal` (#466)
 
 *Changed:*
 
