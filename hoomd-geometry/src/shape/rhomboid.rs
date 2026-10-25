@@ -494,12 +494,7 @@ impl Scale for Rhomboid {
     /// ```
     #[inline]
     fn scale_volume(&self, v: PositiveReal) -> Self {
-        let v = v
-            .get()
-            .sqrt()
-            .try_into()
-            .expect("sqrt of positive real is positive");
-        self.scale_length(v)
+        self.scale_length(v.sqrt())
     }
 }
 

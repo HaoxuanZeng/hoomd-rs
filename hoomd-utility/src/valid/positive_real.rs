@@ -79,6 +79,52 @@ impl PositiveReal {
     pub const fn get(&self) -> f64 {
         self.0
     }
+
+    /// Compute the square root.
+    ///
+    /// The square root of a positive finite value is always a positive finite value,
+    /// so the result is guaranteed to be valid.
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use hoomd_utility::valid::PositiveReal;
+    ///
+    /// # fn main() -> Result<(), Box<dyn std::error::Error>> {
+    /// let positive = PositiveReal::try_from(4.0)?;
+    ///
+    /// assert_eq!(positive.sqrt().get(), 2.0);
+    /// # Ok(())
+    /// # }
+    /// ```
+    #[must_use]
+    #[inline]
+    pub fn sqrt(&self) -> Self {
+        Self(self.0.sqrt())
+    }
+
+    /// Compute the cube root.
+    ///
+    /// The cube root of a positive finite value is always a positive finite value,
+    /// so the result is guaranteed to be valid.
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use hoomd_utility::valid::PositiveReal;
+    ///
+    /// # fn main() -> Result<(), Box<dyn std::error::Error>> {
+    /// let positive = PositiveReal::try_from(27.0)?;
+    ///
+    /// assert_eq!(positive.cbrt().get(), 3.0);
+    /// # Ok(())
+    /// # }
+    /// ```
+    #[must_use]
+    #[inline]
+    pub fn cbrt(&self) -> Self {
+        Self(self.0.cbrt())
+    }
 }
 
 impl Eq for PositiveReal {}
@@ -268,6 +314,22 @@ mod tests {
         let mut sum = positive_real!(1.0);
         sum += positive_real!(0.5);
         check!(sum.get() == 1.5);
+    }
+
+    #[test]
+    fn positive_real_roots() {
+        check!(positive_real!(4.0).sqrt().get() == 2.0);
+        check!(positive_real!(27.0).cbrt().get() == 3.0);
+
+        // The result is valid even at the extremes of the representable range.
+        let largest = PositiveReal::try_from(f64::MAX).expect("f64::MAX is positive");
+        check!(largest.sqrt().get().is_finite());
+        check!(largest.cbrt().get().is_finite());
+
+        let smallest =
+            PositiveReal::try_from(f64::from_bits(1)).expect("smallest subnormal is positive");
+        check!(smallest.sqrt().get() > 0.0);
+        check!(smallest.cbrt().get() > 0.0);
     }
 
     #[test]
