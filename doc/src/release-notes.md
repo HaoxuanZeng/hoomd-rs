@@ -20,10 +20,6 @@
 * `[tutorials]`: The workflow tutorial now uses `hoomd-workspace` (#403).
 * `[hoomd-microstate]`: `Periodic<Hypercuboid<N>>::GenerateGhosts` now works for arbitrary dimension (#338)
 
-*Deprecated:*
-
-*Removed:*
-
 *Fixed:*
 
 * `[hoomd-linear-algebra]`: `Matrix::add_assign` no longer uses excess memory (#416).
