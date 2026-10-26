@@ -2,6 +2,10 @@
 
 ## Next release
 
+*Highlight:*
+
+**hoomd-rs 1.4** brings a number of performance improvements, bug fixes, and new features. It fixes a critical bug where *hoomd-rs* processes would sometimes freeze when writing GSD files. It also includes new functionality to enable the cell list data structure in spherical space and to support rotations in 4D.
+
 *Added:*
 
 * `[hoomd-microstate]`: Add the `max_ghosts_12`, `max_ghosts_16`, `max_ghosts_32`, and `max_ghosts_64` cargo features that set the maximum number of ghosts per site. The largest enabled feature is used when multiple are set simultaneously.
