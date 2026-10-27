@@ -1,6 +1,10 @@
 # Release Notes
 
-## Next release
+## 1.4.0 (2026-10-26)
+
+*Highlight:*
+
+**hoomd-rs 1.4** brings a number of performance improvements, bug fixes, and new features. It fixes a critical bug where *hoomd-rs* processes would sometimes freeze when writing GSD files. It also includes new functionality to enable the cell list data structure in spherical space and to support rotations in 4D.
 
 *Added:*
 
@@ -19,10 +23,6 @@
 * `[hoomd-spatial]`: `PointsIterator::next` is now `inline(always)` for better performance (#416).
 * `[tutorials]`: The workflow tutorial now uses `hoomd-workspace` (#403).
 * `[hoomd-microstate]`: `Periodic<Hypercuboid<N>>::GenerateGhosts` now works for arbitrary dimension (#338)
-
-*Deprecated:*
-
-*Removed:*
 
 *Fixed:*
 
