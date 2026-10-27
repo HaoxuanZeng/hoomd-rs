@@ -193,7 +193,7 @@
 //! * `max_ghosts_64`: Set [`MAX_GHOSTS`] to at least 64.
 //!
 //! [`MAX_GHOSTS`]: crate::boundary::MAX_GHOSTS
-//! 
+//!
 //! # Complete documentation
 //!
 //! `hoomd-microstate` is is a part of *hoomd-rs*. Read the [complete documentation]
