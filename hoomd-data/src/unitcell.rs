@@ -144,7 +144,22 @@ impl UnitCell<2> {
             basis_positions: vec![Cartesian::from([0.0, 0.0])],
         }
     }
-}
+
+    /// Create a kagome unit cell.
+    pub fn kagome() -> Self {
+        Self {
+            lattice_vectors: vec![
+                Cartesian::from([1.0, 0.0]),
+                Cartesian::from([0.5, (3.0f64).sqrt() / 2.0]),
+            ],
+            basis_positions: vec![
+                Cartesian::from([0.0, 0.0]),
+                Cartesian::from([0.5, 0.0]),
+                Cartesian::from([0.0, 0.5]),
+            ]
+        }
+    }
+ }
 
 impl UnitCell<3> {
     /// Create a body-centered cubic (BCC) unit cell.
